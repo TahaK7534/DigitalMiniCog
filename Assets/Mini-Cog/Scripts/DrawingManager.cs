@@ -8,7 +8,7 @@ namespace com.UniversityOfAlberta.product
     {
         public GameObject linePrefab; 
         public Collider2D drawingAreaCollider;
-        public Camera providedCamera; // Add this line to allow camera assignment
+        public Camera providedCamera; 
 
         LineDrawing activeLine;
 

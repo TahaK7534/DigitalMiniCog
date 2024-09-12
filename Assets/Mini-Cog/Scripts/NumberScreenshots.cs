@@ -7,7 +7,7 @@ namespace com.UniversityOfAlberta.product
 {
     public class NumberScreenshots : MonoBehaviour
     {
-        public List<BoxCollider2D> boxColliders; // List to hold BoxCollider2D
+        public List<BoxCollider2D> boxColliders; 
 
         public void Screenshot()
         {
@@ -29,8 +29,9 @@ namespace com.UniversityOfAlberta.product
                 screenshotTexture.Apply();
 
                 byte[] byteArray = screenshotTexture.EncodeToPNG();
-                string filePath = Path.Combine(Application.dataPath, "ColliderScreenshot_" + collider.gameObject.name + ".png");
+                string filePath = Path.Combine(Application.persistentDataPath, "ColliderScreenshot_" + collider.gameObject.name + ".png");
                 File.WriteAllBytes(filePath, byteArray);
+
 
                 // Clean up
                 Destroy(screenshotTexture);

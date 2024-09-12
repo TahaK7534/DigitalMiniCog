@@ -10,7 +10,6 @@ namespace com.UniversityOfAlberta.product
 {
     public class TextToSpeach : MonoBehaviour
     {
-        // Start is called before the first frame update
 
         [SerializeField] private TTSSpeaker Speaker;
         public TextMeshProUGUI MyText;

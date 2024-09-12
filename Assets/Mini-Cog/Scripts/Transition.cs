@@ -7,10 +7,8 @@ namespace com.UniversityOfAlberta.product
 {
     public class Transition : MonoBehaviour
     {
-        // Public string to specify the scene name in the Inspector
         public string sceneToLoad;
 
-        // Function to call the scene
         public void LoadScene()
         {
             if (!string.IsNullOrEmpty(sceneToLoad))
