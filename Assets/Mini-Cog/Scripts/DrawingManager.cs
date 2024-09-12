@@ -8,12 +8,30 @@ namespace com.UniversityOfAlberta.product
     {
         public GameObject linePrefab; 
         public Collider2D drawingAreaCollider;
-        
+        public Camera providedCamera; // Add this line to allow camera assignment
+
         LineDrawing activeLine;
 
         void Update()
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // Check if the provided camera is assigned
+            if (providedCamera == null)
+            {
+                Debug.LogError("No camera assigned. Please assign a camera to the DrawingManager.");
+                return;
+            }
+
+            // Ensure we are handling valid mouse position values
+            Vector3 screenPosition = Input.mousePosition;
+            if (float.IsNegativeInfinity(screenPosition.x) ||
+                float.IsNegativeInfinity(screenPosition.y) ||
+                float.IsNegativeInfinity(screenPosition.z))
+            {
+                return; // Exit early if screen position is invalid
+            }
+
+            // Convert screen position to world position using the provided camera
+            Vector2 mousePosition = providedCamera.ScreenToWorldPoint(screenPosition);
 
             if (Input.GetMouseButtonDown(0)) 
             {

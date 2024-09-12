@@ -52,7 +52,7 @@ namespace com.UniversityOfAlberta.product
                 
             }
 
-            Speaker.Speak("Please Listean Carefuly and memorize the following words");
+            Speaker.Speak("Please listen carefully and memorize the following words");
             Speaker.SpeakQueued(randomList[0]);
 
             Speaker.SpeakQueued(randomList[1]);
@@ -73,7 +73,7 @@ namespace com.UniversityOfAlberta.product
 
 
         public void RepeatWords() {
-            Speaker.Speak("Please Listean Carefuly and memorize the following words");
+            Speaker.Speak("Please listen carefully and memorize the following words");
             Speaker.SpeakQueued(PickedList[0]);
             Speaker.SpeakQueued(PickedList[1]);
             Speaker.SpeakQueued(PickedList[2]);
