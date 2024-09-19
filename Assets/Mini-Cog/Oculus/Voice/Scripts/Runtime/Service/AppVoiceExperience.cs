@@ -118,6 +118,7 @@ namespace Oculus.Voice
 
         public override VoiceServiceRequest Activate(string text, WitRequestOptions requestOptions, VoiceServiceRequestEvents requestEvents)
         {
+            
             if (CanSend())
             {
                 return voiceServiceImpl.Activate(text, requestOptions, requestEvents);

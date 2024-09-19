@@ -29,8 +29,12 @@ namespace com.UniversityOfAlberta.product
                 screenshotTexture.Apply();
 
                 byte[] byteArray = screenshotTexture.EncodeToPNG();
-                string filePath = Path.Combine(Application.persistentDataPath, "ColliderScreenshot_" + collider.gameObject.name + ".png");
+                string filePath = Path.Combine(Application.dataPath, "ColliderScreenshot_" + collider.gameObject.name + ".png");
                 File.WriteAllBytes(filePath, byteArray);
+
+                // byte[] byteArray = screenshotTexture.EncodeToPNG();
+                // string filePath = Path.Combine(Application.persistentDataPath, "ColliderScreenshot_" + collider.gameObject.name + ".png");
+                // File.WriteAllBytes(filePath, byteArray);
 
 
                 // Clean up

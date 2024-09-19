@@ -9,7 +9,7 @@ namespace com.UniversityOfAlberta.product
         public GameObject linePrefab; 
         public Collider2D drawingAreaCollider;
         public Camera providedCamera; 
-
+        private List<GameObject> drawnLines = new List<GameObject>(); // Track drawn lines
         LineDrawing activeLine;
 
         void Update()
@@ -39,6 +39,7 @@ namespace com.UniversityOfAlberta.product
                 {
                     GameObject newLine = Instantiate(linePrefab);
                     activeLine = newLine.GetComponent<LineDrawing>();
+                    drawnLines.Add(newLine); // Add new line to the list
                 }
             }
 
@@ -51,11 +52,28 @@ namespace com.UniversityOfAlberta.product
             {
                 activeLine.UpdateLine(mousePosition);
             }
+
+            // Undo button logic (e.g., Spacebar for testing)
+            if (Input.GetKeyDown(KeyCode.Space)) 
+            {
+                UndoLastLine();
+            }
         }
 
         bool IsPointInCollider(Vector2 point)
         {
             return drawingAreaCollider.OverlapPoint(point);
+        }
+
+        // Method to undo the last line
+        public void UndoLastLine()
+        {
+            if (drawnLines.Count > 0)
+            {
+                GameObject lastLine = drawnLines[drawnLines.Count - 1];
+                drawnLines.RemoveAt(drawnLines.Count - 1); // Remove last line from the list
+                Destroy(lastLine); // Destroy the last line object
+            }
         }
     }
 }
